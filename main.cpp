@@ -60,13 +60,29 @@ void extractExpression() {
     while (expression[i] != '\0') {
         //check the digit or operators with if-else
         if (isdigit(expression[i])) {
-
+            currentNum = currentNum * 10 + (expression[i] - '0');
         } else {
-
+            numbers[numCount++] = currentNum;
+            operators[opCount++] = expression[i];
+            currentNum = 0;
         }
         i++;
     }
     
+    numbers[numCount++] = currentNum;
+
+    //for debug
+    printf("Numbers: ");
+    for (int i = 0; i < numCount; i++) {
+        printf("%d ", numbers[i]);
+    }
+
+    printf("\nOperators: ");
+    for (int i = 0; i < opCount; i ++) {
+        printf("%c ", operators[i]);
+    }
+
+    printf("\n");
 }
 
 void calculateF() {
