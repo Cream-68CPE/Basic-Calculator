@@ -147,4 +147,12 @@ void calculateF() {
 //print out the steps for the calculation
 void printExpression() {
     //go through loop for each one to print out the number and the operators
+    for (int i = 0; i < numCount; i++) {
+        printf("%d", numbers[i]);
+
+        if (i < opCount) {
+            printf(" %c ", operators[i]);
+        }
+    }
+    printf("\n");
 }
