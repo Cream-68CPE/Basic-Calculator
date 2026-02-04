@@ -35,6 +35,9 @@ void removeNumbers(int index) {
     //after calculate, go through a for loop
     //shift the position by 1 in number array
     //then the amount of numbers - 1
+    for (int i = 0; i < numCount; i++) {
+        numbers[i] = numbers[i + 1];
+    } numCount--;
 }
 
 //remove operators after done calculate
@@ -42,6 +45,9 @@ void removeOperator(int index) {
     //after calculate, go through a for loop
     //shift the position by 1 in operator array
     //then the amount of numbers - 1
+    for (int i = 0; i < opCount; i++) {
+        operators[i] = operators[i + 1];
+    } opCount--;
 }
 
 void extractExpression() {
