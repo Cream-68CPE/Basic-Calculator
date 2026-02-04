@@ -42,6 +42,9 @@ void removeOperator(int index) {
     //after calculate, go through a for loop
     //shift the position by 1 in operator array
     //then the amount of numbers - 1
+    for (int i = 0; i < numCount; i++) {
+        operators[i] = operators[i + 1];
+    } opCount--;
 }
 
 void extractExpression() {
