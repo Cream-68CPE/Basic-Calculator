@@ -17,7 +17,7 @@ int opCount = 0;
 
 //prototype functions
 void extractExpression();
-void calculate();
+void calculateF();
 void printExpression();
 void removeNumber(int index); //remove numbers from the array
 void removeOperator(int index); //remove operators from the array
@@ -27,7 +27,7 @@ int main() {
     printf("Enter the expression that you want to calculate: ");
     scanf("%s", expression);
     extractExpression();
-    calculate();
+    calculateF();
 }
 
 //remove numbers after done calculate
@@ -35,6 +35,9 @@ void removeNumbers(int index) {
     //after calculate, go through a for loop
     //shift the position by 1 in number array
     //then the amount of numbers - 1
+    for (int i = 0; i < numCount; i++) {
+        numbers[i] = numbers[i + 1];
+    } numCount--;
 }
 
 //remove operators after done calculate
@@ -42,7 +45,7 @@ void removeOperator(int index) {
     //after calculate, go through a for loop
     //shift the position by 1 in operator array
     //then the amount of numbers - 1
-    for (int i = 0; i < numCount; i++) {
+    for (int i = 0; i < opCount; i++) {
         operators[i] = operators[i + 1];
     } opCount--;
 }
@@ -57,16 +60,32 @@ void extractExpression() {
     while (expression[i] != '\0') {
         //check the digit or operators with if-else
         if (isdigit(expression[i])) {
-
+            currentNum = currentNum * 10 + (expression[i] - '0');
         } else {
-
+            numbers[numCount++] = currentNum;
+            operators[opCount++] = expression[i];
+            currentNum = 0;
         }
         i++;
     }
     
+    numbers[numCount++] = currentNum;
+
+    //for debug
+    printf("Numbers: ");
+    for (int i = 0; i < numCount; i++) {
+        printf("%d ", numbers[i]);
+    }
+
+    printf("\nOperators: ");
+    for (int i = 0; i < opCount; i ++) {
+        printf("%c ", operators[i]);
+    }
+
+    printf("\n");
 }
 
-void calculate() {
+void calculateF() {
     //Have to do * / % first
     //then continue with + -
     int i = 0;
@@ -128,4 +147,12 @@ void calculate() {
 //print out the steps for the calculation
 void printExpression() {
     //go through loop for each one to print out the number and the operators
+    for (int i = 0; i < numCount; i++) {
+        printf("%d", numbers[i]);
+
+        if (i < opCount) {
+            printf(" %c ", operators[i]);
+        }
+    }
+    printf("\n");
 }
