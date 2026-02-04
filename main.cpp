@@ -17,7 +17,7 @@ int opCount = 0;
 
 //prototype functions
 void extractExpression();
-void calculate();
+void calculateF();
 void printExpression();
 void removeNumber(int index); //remove numbers from the array
 void removeOperator(int index); //remove operators from the array
@@ -27,7 +27,7 @@ int main() {
     printf("Enter the expression that you want to calculate: ");
     scanf("%s", expression);
     extractExpression();
-    calculate();
+    calculateF();
 }
 
 //remove numbers after done calculate
@@ -69,7 +69,7 @@ void extractExpression() {
     
 }
 
-void calculate() {
+void calculateF() {
     //Have to do * / % first
     //then continue with + -
     int i = 0;
